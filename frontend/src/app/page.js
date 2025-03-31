@@ -13,7 +13,7 @@ export default function Home() {
   return (
   <>
     <div
-      className="min-h-screen flex flex-col justify-between md:flex-row bg-gray-100 bg-center"
+      className="w-full flex flex-col justify-between md:flex-row bg-gray-100 bg-center"
     >
       <div className="w-full md:w-1/2 flex flex-col justify-center items-center p-8 bg-white bg-opacity-90">
         <div className="w-full px-4">

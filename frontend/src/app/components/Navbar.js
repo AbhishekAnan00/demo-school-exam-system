@@ -6,12 +6,12 @@ export default function Navbar() {
   return (
     <nav
       style={{
-        background: '#333',
         padding: '10px 20px',
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
       }}
+      className='bg-yellow-500'
     >
       <Link href="/" style={{ color: '#fff', fontSize: '18px', fontWeight: 'bold' }}>
         Demo School

@@ -160,7 +160,7 @@ export default function ExamPage() {
     <div className="min-h-screen flex flex-col">
       <nav className="bg-blue-900 text-white px-4 py-2 flex justify-between items-center">
         <div className="flex items-center space-x-4">
-          <h1 className="text-xl font-bold">DEMO SCHOOL</h1>
+          <h1 className="text-xl font-bold">ONLINE TEST</h1>
           {/* <div className="hidden md:flex space-x-2">
             <button className="bg-blue-700 px-3 py-1 rounded">PHYSICS</button>
             <button className="bg-blue-700 px-3 py-1 rounded">CHEMISTRY</button>
