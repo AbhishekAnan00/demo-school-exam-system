@@ -1,7 +1,8 @@
 'use client';
-
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { motion } from 'framer-motion';
+import { FaUserAlt, FaLock, FaEnvelope } from 'react-icons/fa';
 
 export default function RegisterPage() {
   const [name, setName] = useState('');
@@ -20,7 +21,7 @@ export default function RegisterPage() {
       if (res.ok) {
         const data = await res.json();
         alert(data.message);
-        router.push('/login');
+        router.push('/');
       } else {
         const errorData = await res.json();
         alert('Registration failed: ' + errorData.message);
@@ -31,94 +32,137 @@ export default function RegisterPage() {
     }
   };
 
+  const fieldVariants = {
+    hidden: { x: -50, opacity: 0 },
+    visible: (i) => ({
+      x: 0,
+      opacity: 1,
+      transition: { delay: i * 0.2 },
+    }),
+  };
+
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center p-6">
-      <div className="w-full max-w-md bg-white p-8 rounded-lg shadow-md">
-        <div className="flex items-center justify-center mb-6">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-8 w-8 text-green-500 mr-2"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M12 11c1.657 0 3-1.343 3-3V6a3 3 0 00-6 0v2c0 1.657 1.343 3 3 3z"
-            />
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M5 11h14a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2z"
-            />
-          </svg>
-          <h2 className="text-2xl font-bold text-gray-800">
-            New Candidate Register Here
-          </h2>
-        </div>
+    <div className="relative min-h-screen flex flex-col select-none">
+    
+      <div className="absolute inset-0 bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 flex items-center justify-center">
+        <h1
+          className="text-[15vw] font-bold uppercase text-white mix-blend-exclusion leading-none"
+          style={{
+            WebkitTextFillColor: 'transparent',
+            WebkitBackgroundClip: 'text',
+            backgroundImage: 'linear-gradient(to right, #333, #555, #888, #aaa)',
+          }}
+        >
+          DEMO <span className="text-black">SCHOOL</span>
+        </h1>
+      </div>
 
-        <form onSubmit={handleRegister} className="space-y-4">
-          <div>
-            <label className="block text-gray-700 font-medium mb-1">
-              Name:
-            </label>
-            <input
-              type="text"
-              placeholder="abhishek anand"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              required
-              className="w-full p-2 border rounded focus:ring-2 focus:ring-green-500"
-            />
-          </div>
-          <div>
-            <label className="block text-gray-700 font-medium mb-1">
-              Email:
-            </label>
-            <input
-              type="email"
-              placeholder="abhi@example.com"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              className="w-full p-2 border rounded focus:ring-2 focus:ring-green-500"
-            />
-          </div>
-          <div>
-            <label className="block text-gray-700 font-medium mb-1">
-              Password:
-            </label>
-            <input
-              type="password"
-              placeholder="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-              className="w-full p-2 border rounded focus:ring-2 focus:ring-green-500"
-            />
-          </div>
-
-          <button
-            type="submit"
-            className="w-full bg-green-500 hover:bg-green-600 text-white p-3 rounded-lg"
+      <div className="relative z-10 flex-grow flex items-center justify-center">
+        <motion.div
+          initial={{ opacity: 0, y: -30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="bg-white shadow-md rounded px-8 py-6 w-full max-w-sm"
+        >
+          <motion.h2
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="text-lg font-bold text-center mb-6"
           >
             Register
-          </button>
-        </form>
+          </motion.h2>
 
-        <p className="text-center mt-4">
-          Already have an account?{' '}
-          <a
-            href="/login"
-            className="text-blue-500 hover:underline"
-          >
-            Login here
-          </a>
-        </p>
+          <form onSubmit={handleRegister} className="space-y-4">
+            
+            <motion.div
+              custom={1}
+              initial="hidden"
+              animate="visible"
+              variants={fieldVariants}
+            >
+              <label className="block text-gray-700 font-medium mb-1 flex items-center">
+                <FaUserAlt className="mr-2" />
+                Name
+              </label>
+              <input
+                type="text"
+                placeholder="Enter your name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                required
+                className="w-full p-2 border rounded focus:outline-none"
+              />
+            </motion.div>
+
+            <motion.div
+              custom={2}
+              initial="hidden"
+              animate="visible"
+              variants={fieldVariants}
+            >
+              <label className="block text-gray-700 font-medium mb-1 flex items-center">
+                <FaEnvelope className="mr-2" />
+                Email
+              </label>
+              <input
+                type="email"
+                placeholder="Enter your email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                className="w-full p-2 border rounded focus:outline-none"
+              />
+            </motion.div>
+
+            <motion.div
+              custom={3}
+              initial="hidden"
+              animate="visible"
+              variants={fieldVariants}
+            >
+              <label className="block text-gray-700 font-medium mb-1 flex items-center">
+                <FaLock className="mr-2" />
+                Password
+              </label>
+              <input
+                type="password"
+                placeholder="Enter your password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+                className="w-full p-2 border rounded focus:outline-none"
+              />
+            </motion.div>
+
+            <motion.button
+              type="submit"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.8 }}
+              className="mt-4 w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded font-bold text-sm"
+            >
+              Sign Up
+            </motion.button>
+          </form>
+        </motion.div>
+      </div>
+
+      <div className="relative z-10 bg-gray-200 text-center text-xs text-gray-700 py-2">
+        @copyright ~ AA
       </div>
     </div>
   );
 }
+
+
+
+
+
+
+
+
+
+
