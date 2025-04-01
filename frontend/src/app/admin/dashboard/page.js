@@ -151,7 +151,7 @@ export default function AdminDashboard() {
 
   return (
     <div className="min-h-screen bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 p-6">
-      {/* Header */}
+
       <header className="mb-8 text-center">
         <motion.h1
           className="text-4xl font-bold text-white"
@@ -163,7 +163,6 @@ export default function AdminDashboard() {
         </motion.h1>
       </header>
 
-      {/* Loading or No Results */}
       {loading ? (
         <motion.p
           className="text-center text-white text-xl"
@@ -183,15 +182,20 @@ export default function AdminDashboard() {
           No exam submissions found.
         </motion.p>
       ) : (
-        // Results List
-        <div className="space-y-6">
-          {results.map((result, index) => (
+        <div className="space-y-6 flex flex-row flex-wrap gap-7">
+          {results.map((result, index) => ( 
             <motion.div
               key={result.id}
-              className="bg-white bg-opacity-90 backdrop-filter backdrop-blur-lg shadow-lg rounded-lg p-6"
+              className="bg-white bg-opacity-90 backdrop-filter backdrop-blur-lg shadow-2xl rounded-lg p-6 w-[400px]"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.2 }}
+              style={{
+                opacity: 1,
+                WebkitTextFillColor: 'transparent',
+                WebkitBackgroundClip: 'text',
+                backgroundImage: 'linear-gradient(to right, #fff, #fff, #fff, #fff)',
+              }}
             >
               <h2 className="text-2xl font-semibold mb-2 text-gray-800">
                 {result.student?.name || 'Unknown Student'}{' '}

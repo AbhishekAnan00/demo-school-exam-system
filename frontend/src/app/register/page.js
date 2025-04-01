@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { FaUserAlt, FaLock, FaEnvelope } from 'react-icons/fa';
+import Link from 'next/link';
 
 export default function RegisterPage() {
   const [name, setName] = useState('');
@@ -56,6 +57,16 @@ export default function RegisterPage() {
           DEMO <span className="text-black">SCHOOL</span>
         </h1>
       </div>
+
+
+      <div className="relative z-10 text-white py-4 px-6 flex items-center justify-between">
+        <span className="font-semibold"> <Link href="/">Demo School</Link></span>
+        <span className="font-semibold"><Link href="/admin/dashboard">Admin Dashboard</Link> </span>
+      </div>
+
+
+
+
 
       <div className="relative z-10 flex-grow flex items-center justify-center">
         <motion.div

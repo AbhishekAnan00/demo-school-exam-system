@@ -28,21 +28,21 @@ export default function Home() {
         </h1>
       </div>
 
-      {/* Corner Texts */}
-      <div className="absolute top-4 left-4 z-10 text-white font-bold text-xl">
-        Demo School
-      </div>
-      <Link href="/admin/login"> 
-      <div className="absolute top-4 right-4 z-10 text-white font-bold text-xl">
+      <Link href="/admin/login">
+      <div className="relative top-4 left-4 z-10 text-white font-bold text-xl" style={{
+            opacity: 1,
+            WebkitTextFillColor: 'transparent',
+            WebkitBackgroundClip: 'text',
+            backgroundImage: 'linear-gradient(to right, #333, #555, #888, #888)',
+          }}>
       Admin
       </div>
       </Link>
-
-      {/* <div className="relative z-10 text-white py-4 px-6 flex items-center justify-between">
-        <span className="absolute top-4 left-4 z-10 text-white font-bold text-xl"> <Link href="/">Demo School</Link></span>
-        <span className="absolute top-4 rigth-4 z-10 text-white font-bold text-xl"><Link href="/admin/login">Admin</Link></span>
-      </div> */}
-
+      <Link href="/"> 
+      <div className="absolute top-4 right-4 z-10 text-white font-bold text-xl">
+      Demo School
+      </div>
+      </Link>
 
 
 
@@ -54,8 +54,8 @@ export default function Home() {
             </h2>
             <ol className="list-decimal ml-6 mb-4 text-lg text-gray-700">
               <li>Fill out the registration form</li>
-              <li>Submit necessary documents</li>
-              <li>Pay the examination fee</li>
+              <li>Submit with all details </li>
+              <li>Get back to login</li>
               <li>Wait for confirmation</li>
             </ol>
             <button
